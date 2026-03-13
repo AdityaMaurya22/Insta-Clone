@@ -51,8 +51,6 @@ async function createPost(req, res) {
 
 async function getAllPosts(req, res){
 
-    
-
     const userId = req.user.id
 
     const posts = await postModel.find({
@@ -116,9 +114,32 @@ async function likePostController(req, res){
     })
 }
 
+async function getFeedController(req, res){
+
+    const user = req.user
+
+    const posts = await Promise.all((await postModel.find().populate("user").select("-user.password").lean()) //lean isko mongoose data dtype se normal object me convert karta hai taki add kiya ja sake
+    .map(async (post) => {
+        const isLiked = await likeModel.findOne({
+            user: user.username,
+            post: post._id
+        })
+
+        post.isLiked = !!isLiked //boolean me convert karta hai
+
+        return post
+    }))
+
+    res.status(200).json({
+        message: 'Post fetched Successfully',
+        posts
+    })
+}
+
 module.exports = { 
     createPost,
     getAllPosts,
     getPostDetails,
-    likePostController
+    likePostController,
+    getFeedController
 }
