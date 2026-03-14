@@ -1,0 +1,210 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 25rem;
+    min-height: 100vh;
+    background-color: rgb(16, 16, 16);
+    gap: 0.1rem;
+
+
+    .profile-top {
+        width: 100%;
+        background-color: #191919;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .user-data {
+
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+
+            .image-wrapper {
+                display: flex;
+                justify-content: center;
+                height: 6rem;
+                width: 6rem;
+                border-radius: 50%;
+                padding: 0.2rem;
+                background: conic-gradient(from 30deg, #ff9100, #7700ff, #ff9100);
+
+                img {
+                    width: 100%;
+                    border-radius: 100%;
+                    object-position: center;
+                    object-fit: cover;
+                }
+            }
+
+        }
+
+        .bio-follow {
+            display: flex;
+            gap: 1rem;
+
+
+            .user-bio {
+                width: 50%;
+                height: 5rem;
+                overflow-y: scroll;
+            }
+
+            .user-bio::-webkit-scrollbar {
+                display: none;
+            }
+
+            .follow {
+                width: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+
+                button {
+                    border: none;
+                    padding: 0.5rem 1rem;
+                    border-radius: 0.5rem;
+                }
+
+                .follow-btn {
+                    background-color: rgb(0, 170, 255);
+                    color: rgb(239, 239, 239);
+                    font-weight: 700;
+                }
+
+                .details-btn {
+                    background-color: #454545;
+                    color: white;
+                    font-weight: 700;
+                }
+
+            }
+
+
+        }
+    }
+
+    .profile-bottom {
+        width: 100%;
+        background-color: #191919;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        overflow: hidden;
+
+        .post-top {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgb(239, 239, 239);
+            flex-shrink: 0;
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .create-post {
+                border-radius: 0.5rem;
+                border: none;
+                padding: 0.65rem 1rem;
+                background-color: rgb(0, 170, 255);
+                color: rgb(239, 239, 239);
+                font-weight: 700;
+            }
+        }
+
+        .posts {
+            flex: 1;
+            width: 100%;
+            padding: 0.5rem;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            align-content: start;
+
+            overflow-y: scroll;
+
+            img {
+                width: 100%;
+                max-height: 10rem;
+                object-position: center;
+                object-fit: cover;
+            }
+        }
+
+        .posts::-webkit-scrollbar {
+            display: none;
+        }
+
+    }
+}
+
+.profile-page {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:active {
+    scale: 0.95
+}
+
+@media (max-width:375px) {
+
+    .profile {
+
+        .profile-top {
+            padding: 1rem;
+        }
+
+        .bio-follow {
+            gap: 0.5rem;
+        }
+
+        .follow {
+            gap: 0.5rem;
+
+            button{
+                padding: 0.5rem;
+            }
+        }
+
+    }
+
+}
+
+@media (max-width:320px) {
+
+    .profile {
+
+        .profile-top {
+            padding: 0.75rem;
+
+            .bio-follow {
+                gap: 0.5rem;
+
+                .follow {
+                    button {
+                        padding: 0.5rem 0.65rem;
+                        font-size: 0.75rem;
+                    }
+                }
+
+            }
+        }
+
+    }
+
+}
