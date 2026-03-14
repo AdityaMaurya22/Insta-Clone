@@ -32,7 +32,7 @@ const register = () => {
   }
 
   return (
-    <main>
+    <main className="user-auth">
       <div className="form-container">
         <h1>Register</h1>
         <form onSubmit={handleSubmit}>

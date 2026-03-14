@@ -32,7 +32,7 @@ const login = () => {
   }
 
   return (
-    <main>
+    <main className="user-auth">
       <div className="form-container">
         <h1>Login</h1>
         <form onSubmit={handleSubmit}>
