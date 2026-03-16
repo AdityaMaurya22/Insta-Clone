@@ -193,10 +193,8 @@ async function getFollowersController(req, res) {
             })
         }
 
-        // Extract follower usernames
         const followerUsernames = followers.map(f => f.follower)
 
-        // Find user documents for these usernames
         const followerUsers = await userModel.find({ 
             username: { $in: followerUsernames } 
         }).select('username profile_image bio')
