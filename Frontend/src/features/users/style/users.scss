@@ -1,0 +1,118 @@
+.users-page {
+    height: 100%;
+    width: 100%;
+}
+
+
+.users {
+    height: 100%;
+    max-width: 35rem;
+    background-color: rgb(16, 16, 16);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-content: start;
+    gap: 0.5rem;
+    overflow-y: scroll;
+    padding: 1rem;
+    overflow-x: hidden;
+
+    .user-card {
+        max-width: 100%;
+        aspect-ratio: 1/1;
+        background-color: rgb(37, 37, 37);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .user-img {
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .image-wrapper {
+                height: 5rem;
+                width: 5rem;
+                border-radius: 50%;
+                padding: 0.2rem;
+                background: conic-gradient(from 30deg, #ff9100, #7700ff, #ff9100);
+                gap: 0.5rem;
+
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                    border-radius: 50%;
+                }
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .follow {
+            display: flex;
+            justify-content: space-around;
+
+            .button {
+                padding: 0.3rem 0.5rem;
+                border: none;
+                border-radius: 0.2rem;
+            }
+
+            .follow {
+                background-color: rgb(0, 170, 255);
+                color: rgb(239, 239, 239);
+                font-weight: 700;
+            }
+
+            .view {
+                background-color: #454545;
+                color: white;
+                font-weight: 700;
+            }
+        }
+
+
+    }
+}
+
+.users::-webkit-scrollbar {
+    display: none;
+}
+
+@media(max-width:380px) {
+    .users {
+        width: 100%;
+        padding: 1rem 0.5rem;
+        grid-template-columns: repeat(1,100%);
+
+        .user-card {
+            padding: 0.5rem;
+            gap: 0.5rem;
+            width :100%;
+            height:5rem;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .user-img {
+                flex-direction: row;
+                gap:0.5rem;
+                .image-wrapper {
+                    height: 3rem;
+                    width: 3rem;
+                }
+            }
+
+            .follow {
+                align-items: center;
+                gap: 0.5rem;
+            }
+        }
+    }
+}

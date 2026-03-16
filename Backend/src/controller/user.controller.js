@@ -1,5 +1,7 @@
 const followModel = require('../models/follow.model.js')
 const userModel = require('../models/user.model.js')
+const postModel = require('../models/post.model.js')
+
 
 async function followUserController(req, res){
 
@@ -45,6 +47,20 @@ async function followUserController(req, res){
         follow: followRecord
     })
 
+}
+
+async function checkFollowController(req, res){
+    const followerUsername = req.user.username
+    const followeeUsername = req.params.username
+
+    const isFollowing = await followModel.findOne({
+        follower: followerUsername,
+        follow: followeeUsername
+    })
+
+    res.status(200).json({
+        isFollowing: !!isFollowing
+    })
 }
 
 async function unfollowUserController(req, res){
@@ -127,10 +143,99 @@ async function rejectFollowRequest(req,res){
     
 }
 
+async function allUserController(req, res) {
+
+    const user =req.user.username
+
+    const users = await userModel.find({
+        username: { $ne: user } //$ne login user ko exclude kar raha hai
+    })
+
+    res.status(200).json({
+        message: "Users fetched successfully",
+        users
+    })
+}
+
+async function getUserProfileController(req, res) {
+    const username = req.params.username
+
+    const user = await userModel.findOne({ username })
+
+    if (!user) {
+        return res.status(404).json({
+            message: "User not found"
+        })
+    }
+
+    const posts = await postModel.find({ user: user._id }).sort({ createdAt: -1 })
+
+    res.status(200).json({
+        message: "User profile fetched successfully",
+        user,
+        posts
+    })
+}
+
+async function getFollowersController(req, res) {
+    try {
+        const username = req.user.username
+
+        const followers = await followModel.find({ 
+            follow: username, 
+            status: 'accepted' 
+        })
+
+        if (followers.length === 0) {
+            return res.status(200).json({
+                message: "No followers found",
+                followers: []
+            })
+        }
+
+        // Extract follower usernames
+        const followerUsernames = followers.map(f => f.follower)
+
+        // Find user documents for these usernames
+        const followerUsers = await userModel.find({ 
+            username: { $in: followerUsernames } 
+        }).select('username profile_image bio')
+
+        res.status(200).json({
+            message: "Followers fetched successfully",
+            followers: followerUsers,
+            count: followerUsers.length
+        })
+    } catch (error) {
+        console.error('Error fetching followers:', error)
+        res.status(500).json({
+            message: "Error fetching followers",
+            error: error.message
+        })
+    }
+}
+
+// async function updateUserController(req,res){
+//     const user = req.user._id
+//     const bio = req.body
+
+//     const updateUser = await userModel.findByIdAndUpdate(
+//         user,
+//         { bio },
+
+//     )
+
+
+// }
+
 module.exports = {
     followUserController,
     unfollowUserController,
     followRequestController,
     acceptFollowRequest,
-    rejectFollowRequest
+    rejectFollowRequest,
+    allUserController,
+    checkFollowController,
+    getUserProfileController,
+    getFollowersController
 }

@@ -10,5 +10,6 @@ authRoute.post('/register', authController.authRegister )
 authRoute.post('/login', authController.authLogin )
 
 authRoute.get('/get-me', identifyUser,authController.getMeController)
+authRoute.post('/logout', authController.logoutController)
 
 module.exports = authRoute

@@ -6,7 +6,7 @@ const Post = ({user, post, handleLike, handleUnlike}) => {
         <div className="post">
             <div className="user">
                 <div className="image-wrapper">
-                    <img src={user.profile_image} alt="" />
+                    {user.profile_image ? <img src={user.profile_image} alt="" /> : <div className="placeholder">No Image</div>}
                 </div>
 
                 <h3>{user.username}</h3>

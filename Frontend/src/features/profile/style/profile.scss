@@ -7,7 +7,6 @@
     background-color: rgb(16, 16, 16);
     gap: 0.1rem;
 
-
     .profile-top {
         width: 100%;
         background-color: #191919;
@@ -36,6 +35,17 @@
                     border-radius: 100%;
                     object-position: center;
                     object-fit: cover;
+                }
+
+                .placeholder {
+                    width: 100%;
+                    border-radius: 100%;
+                    background-color: #333;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #fff;
+                    font-size: 0.8rem;
                 }
             }
 
@@ -132,7 +142,7 @@
 
             img {
                 width: 100%;
-                max-height: 10rem;
+                aspect-ratio: 1/1.5;
                 object-position: center;
                 object-fit: cover;
             }

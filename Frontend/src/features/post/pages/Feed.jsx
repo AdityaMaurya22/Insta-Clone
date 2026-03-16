@@ -3,6 +3,7 @@ import '../style/feed.scss'
 import Post from '../components/Post'
 import { usePost } from '../hooks/usePost'
 import Nav from '../../shared/components/Navbar'
+import Navbottom from "../../shared/components/Navbottom"
 
 const Feed = () => {
 
@@ -27,6 +28,7 @@ const Feed = () => {
                         })}
                     </div>
                 </div>
+                <Navbottom />
             </div>
         </main>
     )

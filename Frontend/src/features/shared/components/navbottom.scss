@@ -1,0 +1,23 @@
+.nav-bottom{
+    position: fixed ;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: space-evenly;
+    gap: 0.5rem;
+    background-color: rgba(68, 68, 68, 0.325);
+    width: 10rem;
+    min-width: 7rem;
+    padding: 0.5rem;
+    border-radius: 10rem;
+    font-size: 1.5rem;
+    z-index: 0;
+    backdrop-filter: blur(3px);
+
+    i{
+        cursor:pointer;
+    }
+
+
+}

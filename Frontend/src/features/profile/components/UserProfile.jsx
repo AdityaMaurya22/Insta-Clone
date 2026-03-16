@@ -1,4 +1,4 @@
-import react from 'react'
+import React from 'react'
 import { useNavigate } from "react-router"
 
 const Profile = ({ post, user }) => {
@@ -10,7 +10,7 @@ const Profile = ({ post, user }) => {
             <div className="profile-top">
                 <div className="user-data">
                     <div className="image-wrapper">
-                        <img src={user?.profileImage} alt="" />
+                        {user?.profileImage ? <img src={user.profileImage} alt="" /> : <div className="placeholder">No Image</div>}
                     </div>
                     <h1>{user?.username}</h1>
                 </div>
@@ -19,8 +19,9 @@ const Profile = ({ post, user }) => {
                         {user?.bio} 
                     </div>
                     <div className="follow">
-                        <button className="follow-btn button">Follow</button>
-                        <button className="details-btn">Follower</button>
+                        <button onClick={() => navigate('/followers')} className="details-btn">
+                            Followers
+                        </button>
                     </div>
                 </div>
             </div>

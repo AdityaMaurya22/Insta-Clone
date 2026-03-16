@@ -11,7 +11,7 @@ export const useProfile = () => {
         setLoading(true)
         const data = await getPost()
         setPost(data.posts.reverse())
-        setLoading(false)
+        setLoading(false)   
     }
 
     const handleUser = async () => {

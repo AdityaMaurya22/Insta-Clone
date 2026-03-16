@@ -7,6 +7,7 @@
     background-color: #0c0c0c;
     position: sticky;
     top:0rem;
+    z-index: 2;
 
     p{
         font-size: 1.5rem;
@@ -23,7 +24,60 @@
         transition: all 0.2s ease;
     }
 
-    .button:active{
-        scale: 0.98;
+    .profile-menu {
+        position: relative;
+
+        .profile-image {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #333;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .placeholder {
+                background-color: #333;
+                color: #fff;
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            min-width: 120px;
+            z-index: 10;
+
+            button {
+                width: 100%;
+                background: none;
+                border: none;
+                color: #fff;
+                padding: 0.5rem;
+                text-align: left;
+                cursor: pointer;
+                border-radius: 0.3rem;
+                transition: background-color 0.2s;
+
+                &:hover {
+                    background-color: #333;
+                }
+            }
+        }
     }
 }

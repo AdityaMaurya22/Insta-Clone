@@ -2,6 +2,7 @@ import React,{useEffect} from 'react'
 import '../style/profile.scss'
 import {useProfile} from '../hooks/useProfile'
 import Profiles from "../components/UserProfile"
+import Navbottom from "../../shared/components/Navbottom"
 
 
 const Profile = () => {
@@ -24,6 +25,7 @@ const Profile = () => {
     return (
         <main className="profile-page">
             <Profiles post={post} user={user}/>
+            <Navbottom />
         </main>
     )
 }
