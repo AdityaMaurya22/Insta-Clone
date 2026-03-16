@@ -12,7 +12,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
     credentials: true,
-    origin: 'https://insta-clone-5kpf.onrender.com'
+    origin: 'https://instaclone-egeh.onrender.com'
 }))
 
 app.use('/api/auth', authRouter)
